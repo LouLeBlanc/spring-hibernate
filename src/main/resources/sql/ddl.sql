@@ -1,6 +1,6 @@
-DROP USER 'prospring5';
-FLUSH PRIVILEGES;
-CREATE USER 'prospring5' IDENTIFIED BY 'prospring5';
+CREATE USER IF NOT EXISTS 'prospring5' IDENTIFIED BY 'prospring5';
+
+DROP DATABASE publishing_hibernate;
 
 CREATE SCHEMA publishing_hibernate;
 

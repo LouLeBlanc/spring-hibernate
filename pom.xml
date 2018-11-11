@@ -12,24 +12,45 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.brandeis.rseg105.spring.jdbc.app</groupId>
-	<artifactId>spring-hibernate</artifactId>
+	<artifactId>SpringHibernate</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-hibernate</name>
+	<name>SpringHibernate</name>
 	<description>RSEG105, project1 part 4</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>5.0.2.RELEASE</spring.version>
 		<slf4j.log4j.version>1.7.6</slf4j.log4j.version>
-		<mysql.client.version>5.1.29</mysql.client.version>
 		<commons.dbcp2.version>2.2.0</commons.dbcp2.version>
-		<java.version>1.8</java.version>
+		<mysql.client.version>5.1.29</mysql.client.version>
 		<hibernate.entitymanager.version>5.2.12.Final</hibernate.entitymanager.version>
+		<spring.orm.version>5.0.2.RELEASE</spring.orm.version>
+		<java.version>1.8</java.version>
 		<commons.dbcp2.version>2.2.0</commons.dbcp2.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${commons.dbcp2.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -43,27 +64,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-			<version>${commons.dbcp2.version}</version>
+			<version>${spring.orm.version}</version>
 		</dependency>
 	</dependencies>
 
