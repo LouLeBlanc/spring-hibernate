@@ -53,7 +53,6 @@ public class AppConfig {
 			return null;
 		}
 	}
-	
 
 	private Properties hibernateProperties() {
 		Properties hibernateProp = new Properties();
@@ -61,14 +60,15 @@ public class AppConfig {
 		hibernateProp.put("hibernate.format_sql", true);
 		hibernateProp.put("hibernate.id.new_generator_mappings", false);
 		hibernateProp.put("hibernate.use_sql_comments", true);
-		hibernateProp.put("hibernate.show_sql", true);
+		hibernateProp.put("hibernate.show_sql", false);
 		hibernateProp.put("hibernate.max_fetch_depth", 3);
 		hibernateProp.put("hibernate.jdbc.batch_size", 10);
 		hibernateProp.put("hibernate.jdbc.fetch_size", 50);
 		return hibernateProp;
 	}
 
-	@Bean public SessionFactory sessionFactory() throws IOException {
+	@Bean
+	public SessionFactory sessionFactory() throws IOException {
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
 		sessionFactoryBean.setDataSource(dataSource());
 		sessionFactoryBean.setPackagesToScan("edu.brandeis.rseg105.hibernate.domain");
@@ -77,7 +77,8 @@ public class AppConfig {
 		return sessionFactoryBean.getObject();
 	}
 
-	@Bean public PlatformTransactionManager transactionManager() throws IOException {
+	@Bean
+	public PlatformTransactionManager transactionManager() throws IOException {
 		return new HibernateTransactionManager(sessionFactory());
 	}
 }

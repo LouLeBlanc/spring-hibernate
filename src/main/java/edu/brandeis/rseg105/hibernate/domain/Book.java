@@ -19,12 +19,12 @@ import javax.persistence.*;
 	@NamedQuery(name=Book.FIND_BOOK_WITH_AUTHOR_CATEGORY_BY_ID,
 			query="select distinct b from Book b " +
 				"left join fetch b.category c " +
-				"left join fetch b.author a " +
+				"left join fetch b.authors a " +
 				"where b.id = :id"),
 	@NamedQuery(name=Book.FIND_ALL_WITH_AUTHOR_CATEGORY,
 			query="select distinct b from Book b " +
 				"left join fetch b.category c " +
-				"left join fetch b.author a"),
+				"left join fetch b.authors a"),
 	@NamedQuery(name=Book.FIND_ALL_BOOKS,
 			query="select distinct b from Book b ")
 })
@@ -47,8 +47,10 @@ public class Book extends AbstractEntity {
 
 	// Book ID is inherited from AbstractEntity, as is version.
 	
+	/*
 	@Column(name="category_id")
 	private long   category_id;
+	*/
 
 	@Column(name="isbn")
 	private String isbn;
@@ -59,7 +61,8 @@ public class Book extends AbstractEntity {
 	@Column(name="price")
 	private float  price;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
+	@JoinColumn(name = "category_id")
 	private Category category;
 
 	@ManyToMany
@@ -92,9 +95,11 @@ public class Book extends AbstractEntity {
 	/**
 	 * @return the category_id
 	 */
+	/*
 	public long getCategory_id() {
 		return category_id;
 	}
+	*/
 
 	/**
 	 * @return the isbn
@@ -139,9 +144,11 @@ public class Book extends AbstractEntity {
 		return authors.add(author);
 	}
 
+	/*
 	public void setCategory_id(long category_id) {
 		this.category_id = category_id;
 	}
+	*/
 
 	/**
 	 * @param isbn the isbn to set

@@ -8,6 +8,9 @@
 
 package edu.brandeis.rseg105.hibernate.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 /**
@@ -16,20 +19,14 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "category")
-public class Category {
-	
-	@Column
-	private long			id;
+public class Category extends AbstractEntity {
 	
 	@Column
 	private String			name;
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
+	@OneToMany(mappedBy = "category", cascade=CascadeType.ALL,
+			orphanRemoval=true)
+	private Set<Book> books = new HashSet<>();
 
 	/**
 	 * @param id the id to set
@@ -50,6 +47,23 @@ public class Category {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<Book> getBooks() {
+		return books;
+	}
+	
+	public boolean addBook(Book book) {
+		book.setCategory(this);
+		return books.add(book);
+	}
+	
+	public void removeBook(Book book) {
+		books.remove(book);
+	}
+	
+	public void setBooks(Set<Book> books) {
+		this.books = books;
 	}
 
 	/*

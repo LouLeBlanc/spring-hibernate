@@ -1,6 +1,7 @@
 CREATE TABLE  category(
 		id INT NOT NULL,
 		name VARCHAR(100) NOT NULL,
+		version INT NOT NULL DEFAULT 0,
 		PRIMARY key ( ID )
 	);
 
