@@ -52,13 +52,6 @@ public class Book extends AbstractEntity {
 	public static final String FIND_ALL_BOOKS =
 			"Book.FindAllBooks";
 
-	// Book ID is inherited from AbstractEntity, as is version.
-	
-	/*
-	@Column(name="category_id")
-	private long   category_id;
-	*/
-
 	@Column(name="isbn")
 	private String isbn;
 
@@ -99,15 +92,6 @@ public class Book extends AbstractEntity {
 		return category.getName();
 	}
 	
-	/**
-	 * @return the category_id
-	 */
-	/*
-	public long getCategory_id() {
-		return category_id;
-	}
-	*/
-
 	/**
 	 * @return the isbn
 	 */
@@ -150,12 +134,6 @@ public class Book extends AbstractEntity {
 	public boolean addAuthor(Author author) {
 		return authors.add(author);
 	}
-
-	/*
-	public void setCategory_id(long category_id) {
-		this.category_id = category_id;
-	}
-	*/
 
 	/**
 	 * @param isbn the isbn to set

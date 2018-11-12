@@ -53,10 +53,8 @@ public class FindBooksAuthorsAndCategories {
 
         books.forEach(b -> {
         	logger.info(b.toString());
-        	logger.info(b.getCategoryName());
-        	if (b.getAuthors() != null) {
-        		b.getAuthors().forEach(a -> logger.info(a.toString()));
-        	}
+        	logger.info(b.getCategory().toString());
+			b.getAuthors().forEach(a -> logger.info(a.toString()));
 			logger.info("-----------------");
         });
 	}
