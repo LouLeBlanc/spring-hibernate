@@ -41,6 +41,14 @@ public class PublishingDaoImpl implements PublishingDao {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
+	public List<Book> findBooksByAuthorId(Long id) {
+		return sessionFactory.getCurrentSession().
+				getNamedQuery("Book.findBooksByAuthorId").
+				setParameter("id", id).list();
+	}
+
+	@Override
 	public Book findBookWithAuthorAndCategoryById(Long id) {
 		return (Book) sessionFactory.getCurrentSession().
 				getNamedQuery("Book.findBookWithAuthorCategoryById").

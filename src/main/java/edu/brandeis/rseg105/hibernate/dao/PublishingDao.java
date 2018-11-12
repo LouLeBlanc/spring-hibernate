@@ -18,6 +18,8 @@ public interface PublishingDao {
 	
 	List<Book> findAllWithAuthorAndCategory();
 	
+	List<Book> findBooksByAuthorId(Long id);
+	
 	Book findBookWithAuthorAndCategoryById(Long id);
 
 	Book save(Book book);

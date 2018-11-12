@@ -21,6 +21,11 @@ import javax.persistence.*;
 				"left join fetch b.category c " +
 				"left join fetch b.authors a " +
 				"where b.id = :id"),
+	@NamedQuery(name=Book.FIND_BOOKS_BY_AUTHOR_ID,
+			query="select distinct b from Book b " +
+				"left join fetch b.category c " +
+				"left join fetch b.authors a " +
+				"where a.id = :id"),
 	@NamedQuery(name=Book.FIND_ALL_WITH_AUTHOR_CATEGORY,
 			query="select distinct b from Book b " +
 				"left join fetch b.category c " +
@@ -40,6 +45,8 @@ public class Book extends AbstractEntity {
 
 	public static final String FIND_BOOK_WITH_AUTHOR_CATEGORY_BY_ID =
 			"Book.findBookWithAuthorCategoryById";
+	public static final String FIND_BOOKS_BY_AUTHOR_ID =
+			"Book.findBooksByAuthorId";
 	public static final String FIND_ALL_WITH_AUTHOR_CATEGORY =
 			"Book.findAllWithAuthorCategory";
 	public static final String FIND_ALL_BOOKS =

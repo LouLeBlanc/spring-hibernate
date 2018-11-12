@@ -151,6 +151,28 @@
 						</configuration>
 					</execution>
 
+					<execution>
+						<phase>package</phase>
+						<id>find-books-by-author-id</id>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>edu.brandeis.rseg105.hibernate.app.FindBooksByAuthorId</mainClass>
+								</transformer>
+							</transformers>
+							<finalName>find-books-by-author-id</finalName>
+						</configuration>
+					</execution>
+
 				</executions>
 			</plugin>
 

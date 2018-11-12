@@ -41,16 +41,15 @@ public class FindBooksAuthorsAndCategories {
         PublishingDao publishingDao = ctx.getBean(PublishingDao.class);
 
         List<Book> books = publishingDao.findAllWithAuthorAndCategory();
+        logger.info("================================");
+        logger.info("Listing all books with authors and category names: ");
         listBooksWithCategoryAndAuthors(books);
+        logger.info("================================");
 
         ctx.close();
-
 	}
 	
 	public static void listBooksWithCategoryAndAuthors(List<Book> books) {
-
-        logger.info("================================");
-        logger.info("Listing books with authors and category names: ");
 
         books.forEach(b -> {
         	logger.info(b.toString());
@@ -60,8 +59,5 @@ public class FindBooksAuthorsAndCategories {
         	}
 			logger.info("-----------------");
         });
-
-        logger.info("================================");
-		
 	}
 }
