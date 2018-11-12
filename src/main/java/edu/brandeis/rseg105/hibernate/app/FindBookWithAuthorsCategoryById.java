@@ -29,25 +29,26 @@ public class FindBookWithAuthorsCategoryById {
 	private static Logger logger = LoggerFactory.getLogger(FindBookWithAuthorsCategoryById.class);
 
 	public static void main(String[] args) {
-		Long bookID = 9L;
-        logger.info("================================");
-        logger.info("Listing book with authors and category by book's ID: ");
+		Long bookID = 1L;
 
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         PublishingDao publishingDao = ctx.getBean("publishingDao", PublishingDao.class); 
 
         Book book = publishingDao.findBookWithAuthorAndCategoryById(bookID);
-        	logger.info(book.toString());
-        	logger.info(book.getCategory().toString());
-        	Set<Author> authors = book.getAuthors();
-        	authors.forEach(author -> {
-        		logger.info(author.toString());
-        	});
+
+        logger.info("================================");
+        logger.info("Listing book with authors and category by book's ID: ");
+		logger.info(book.toString());
+		logger.info(book.getCategory().toString());
+		Set<Author> authors = book.getAuthors();
+		authors.forEach(author -> {
+			logger.info(author.toString());
+		});
+        logger.info("================================");
 
         ctx.close();
 
-        logger.info("================================");
 
 	}
 }

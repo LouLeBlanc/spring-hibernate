@@ -40,26 +40,28 @@ public class FindBooksAuthorsAndCategories {
 
         PublishingDao publishingDao = ctx.getBean(PublishingDao.class);
 
-        logger.info("================================");
-        logger.info("Listing books with authors and category names: ");
-
         List<Book> books = publishingDao.findAllWithAuthorAndCategory();
-        logger.info("---------------- Listing Books Start ----------------");
-        books.forEach(book -> {
-        	logger.info(book.toString());
-        	logger.info(book.getCategory().toString());
-        	Set<Author> authors = book.getAuthors();
-        	authors.forEach(author -> {
-        		logger.info(author.toString());
-        	});
-			logger.info("-----------------");
-        });
-        logger.info("----------------- Listing Books End -----------------");
+        listBooksWithCategoryAndAuthors(books);
 
         ctx.close();
 
-        logger.info("================================");
-
 	}
+	
+	public static void listBooksWithCategoryAndAuthors(List<Book> books) {
 
+        logger.info("================================");
+        logger.info("Listing books with authors and category names: ");
+
+        books.forEach(b -> {
+        	logger.info(b.toString());
+        	logger.info(b.getCategoryName());
+        	if (b.getAuthors() != null) {
+        		b.getAuthors().forEach(a -> logger.info(a.toString()));
+        	}
+			logger.info("-----------------");
+        });
+
+        logger.info("================================");
+		
+	}
 }

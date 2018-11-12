@@ -32,7 +32,6 @@ public class FindAllBooksApp {
 	 */
 	public static void main(String[] args) {
 
-        logger.info("================ Start of Find All Books ================");
 
         GenericApplicationContext ctx =
         		new AnnotationConfigApplicationContext(AppConfig.class);
@@ -40,13 +39,14 @@ public class FindAllBooksApp {
         PublishingDao publishingDao = ctx.getBean(PublishingDao.class); 
 
         List<Book> books = publishingDao.findAll();
-        logger.info("---------------- Listing Books Start ----------------");
-        books.forEach(book -> { logger.info(book.toString()); });
-        logger.info("----------------- Listing Books End -----------------");
 
-        ctx.close();
-
-        logger.info("================= End of Find All Books =================");
+        logger.info("================================");
+        logger.info("Listing books without authors and category names: ");
+        books.forEach(book -> {
+        	logger.info(book.toString());
+			logger.info("-----------------");
+		});
+        logger.info("================================");
 
 	}
 }
