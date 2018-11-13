@@ -159,8 +159,11 @@ public class Book extends AbstractEntity {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Book - Id: %d, Category Id: %s, ISBN: %s, Title: %s, Price: %f",
-				this.id, this.category.getId(), this.isbn, this.title, this.price);
+		return String.format("Book - Id: " + this.id +
+				", Category Id: " + this.category.getId() +
+				", ISBN: " + this.isbn +
+				", Title: " + this.title +
+				", Price: " + this.price);
 	}
 
 	@Override public boolean equals(Object o) {
