@@ -33,7 +33,6 @@ public class CreateBookWithAuthor {
 
 	public static void main(String[] args) {
 		Author newAuthor = new Author();
-		newAuthor.setId(9L);
 		newAuthor.setFirstName("Joshua");
 		newAuthor.setLastName("Bloch");
 		newAuthor.setDescription("Professor, Carnegie Mellon University");
@@ -43,7 +42,6 @@ public class CreateBookWithAuthor {
 		existingCategory.setName("Java");
 
 		Book newBook = new Book();
-		newBook.setId(8L);
 		newBook.setIsbn("9780134685997");
 		newBook.setTitle("Effective Java");
 		newBook.setPrice((float) 54.99);
