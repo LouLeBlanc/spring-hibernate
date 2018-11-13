@@ -9,7 +9,6 @@
 package edu.brandeis.rseg105.hibernate.app;
 
 import java.util.List;
-import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,6 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import edu.brandeis.rseg105.hibernate.config.AppConfig;
 import edu.brandeis.rseg105.hibernate.dao.PublishingDao;
-import edu.brandeis.rseg105.hibernate.domain.Author;
 import edu.brandeis.rseg105.hibernate.domain.Book;
 
 /**

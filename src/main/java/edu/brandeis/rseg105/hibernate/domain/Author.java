@@ -7,20 +7,20 @@
  */
 package edu.brandeis.rseg105.hibernate.domain;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "author")
-public class Author implements Serializable {
+public class Author extends AbstractEntity {
 
-	@Id
-	@Column(name = "id")
-	private long id;
-	
 	@Column(name = "first_name")
 	private String firstName;
 
@@ -35,20 +35,6 @@ public class Author implements Serializable {
 			joinColumns = @JoinColumn(name = "author_id"),
 			inverseJoinColumns = @JoinColumn(name = "book_id"))
 	private Set<Book> books = new HashSet<>();
-
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the books

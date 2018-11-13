@@ -17,9 +17,7 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import edu.brandeis.rseg105.hibernate.config.AppConfig;
 import edu.brandeis.rseg105.hibernate.dao.PublishingDao;
-import edu.brandeis.rseg105.hibernate.domain.Author;
 import edu.brandeis.rseg105.hibernate.domain.Book;
-import edu.brandeis.rseg105.hibernate.domain.Category;
 
 /**
  * 
@@ -31,6 +29,13 @@ public class DeleteBookWithAuthor {
 	private static Logger logger = LoggerFactory.getLogger(DeleteBookWithAuthor.class);
 
 	public static void main(String[] args) {
+		/*
+		 * This ID will only be valid the first time this application is run.
+		 * The CreateBookWithAuthor app can be run again, but it will increment
+		 * the ID given to the new record.
+		 *
+		 */
+		Long bookId = 8L;
 
 		GenericApplicationContext ctx =
 				new AnnotationConfigApplicationContext(AppConfig.class);
@@ -39,9 +44,12 @@ public class DeleteBookWithAuthor {
 
 		Book deleteBook = publishingDao.findBookWithAuthorAndCategoryById(8L);
 		logger.info("================================");
-		logger.info("Removing book " + deleteBook.getTitle() + ":");
 
-		publishingDao.delete(deleteBook);
+		if (deleteBook != null) {
+			logger.info("Removing book Id " + deleteBook.getId() +
+				       " (" + deleteBook.getTitle() + "):");
+			publishingDao.delete(deleteBook);
+		}
 
 		List<Book> books = publishingDao.findAllWithAuthorAndCategory();
 		logger.info("================================");

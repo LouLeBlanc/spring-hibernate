@@ -48,5 +48,6 @@ public class FindAllBooksApp {
 			});
 		logger.info("================================");
 
+		ctx.close();
 	}
 }

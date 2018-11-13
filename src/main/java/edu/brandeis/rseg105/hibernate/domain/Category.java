@@ -8,10 +8,16 @@
 
 package edu.brandeis.rseg105.hibernate.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * @author Louis LeBlanc
@@ -19,9 +25,18 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "category")
-public class Category extends AbstractEntity {
+public class Category implements Serializable {
 	
-	@Column
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="id")
+	private Long			id;
+
+	@Column(name="name")
 	private String			name;
 
 	@OneToMany(mappedBy = "category", cascade=CascadeType.ALL,
@@ -47,6 +62,10 @@ public class Category extends AbstractEntity {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public Set<Book> getBooks() {

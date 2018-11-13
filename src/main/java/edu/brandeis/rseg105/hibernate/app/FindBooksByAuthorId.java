@@ -45,5 +45,7 @@ public class FindBooksByAuthorId {
 		logger.info("Listing books by author id " + authorId + ": ");
 		FindBooksAuthorsAndCategories.listBooksWithCategoryAndAuthors(books);
 		logger.info("================================");
+		
+		ctx.close();
 	}
 }
