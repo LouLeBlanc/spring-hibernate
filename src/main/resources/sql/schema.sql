@@ -6,7 +6,7 @@ CREATE TABLE  category(
 	);
 
 CREATE TABLE  book(
-		id INT NOT NULL,
+		id INT NOT NULL AUTO_INCREMENT,
 		category_id INT NOT NULL,
 		isbn VARCHAR(13) NOT NULL,
 		title VARCHAR(500) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE  book(
 	);
 
 CREATE TABLE  author(
-		id INT NOT NULL,
+		id INT NOT NULL AUTO_INCREMENT,
 		first_name VARCHAR(60) NOT NULL,
 		last_name VARCHAR(60) NOT NULL,
 		description VARCHAR(1200) NOT NULL,
@@ -32,6 +32,6 @@ CREATE TABLE author_book(
 		book_id INT NOT NULL,
 		PRIMARY KEY (book_id, author_id),
 		CONSTRAINT FK_BOOK_AUTHOR_1 FOREIGN KEY (book_id) REFERENCES book (id) ON DELETE CASCADE,
-		CONSTRAINT FK_BOOK_AUTHOR_2 FOREIGN KEY (author_id) REFERENCES author (id) ON DELETE CASCADE
+		CONSTRAINT FK_BOOK_AUTHOR_2 FOREIGN KEY (author_id) REFERENCES author (id)
 	);
 
