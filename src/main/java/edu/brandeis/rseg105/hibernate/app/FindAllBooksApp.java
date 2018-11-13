@@ -33,20 +33,20 @@ public class FindAllBooksApp {
 	public static void main(String[] args) {
 
 
-        GenericApplicationContext ctx =
-        		new AnnotationConfigApplicationContext(AppConfig.class);
+		GenericApplicationContext ctx =
+				new AnnotationConfigApplicationContext(AppConfig.class);
 
-        PublishingDao publishingDao = ctx.getBean(PublishingDao.class); 
+		PublishingDao publishingDao = ctx.getBean(PublishingDao.class); 
 
-        List<Book> books = publishingDao.findAll();
+		List<Book> books = publishingDao.findAll();
 
-        logger.info("================================");
-        logger.info("Listing books without authors and category names: ");
-        books.forEach(book -> {
-        	logger.info(book.toString());
-			logger.info("-----------------");
-		});
-        logger.info("================================");
+		logger.info("================================");
+		logger.info("Listing books without authors and category names: ");
+		books.forEach(book -> {
+			logger.info(book.toString());
+				logger.info("-----------------");
+			});
+		logger.info("================================");
 
 	}
 }

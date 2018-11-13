@@ -50,26 +50,23 @@ public class CreateBookWithAuthor {
 		newBook.addAuthor(newAuthor);
 		newBook.setCategory(existingCategory);
 
-        GenericApplicationContext ctx =
-        		new AnnotationConfigApplicationContext(AppConfig.class);
+		GenericApplicationContext ctx =
+				new AnnotationConfigApplicationContext(AppConfig.class);
 
-        PublishingDao publishingDao = ctx.getBean(PublishingDao.class);
+		PublishingDao publishingDao = ctx.getBean(PublishingDao.class);
 
-        logger.info("================================");
-        logger.info("Adding book " + newBook.getTitle() + ":");
-        Book addedBook = publishingDao.save(newBook);
-        
-        if (!newBook.equals(addedBook)) {
-			logger.info("Problem adding book!");
-        }
+		logger.info("================================");
+		logger.info("Adding book " + newBook.getTitle() + ":");
 
-        List<Book> books = publishingDao.findAllWithAuthorAndCategory();
-        logger.info("================================");
-        logger.info("Listing all books with authors and category names:");
-        FindBooksAuthorsAndCategories.listBooksWithCategoryAndAuthors(books);
-        logger.info("================================");
+		/* TODO: Fix this - exception thrown, no record added.
+		 */
+		publishingDao.save(newBook);
+		List<Book> books = publishingDao.findAllWithAuthorAndCategory();
+		logger.info("================================");
+		logger.info("Listing all books with authors and category names:");
+		FindBooksAuthorsAndCategories.listBooksWithCategoryAndAuthors(books);
+		logger.info("================================");
 
-        ctx.close();
-
+		ctx.close();
 	}
 }

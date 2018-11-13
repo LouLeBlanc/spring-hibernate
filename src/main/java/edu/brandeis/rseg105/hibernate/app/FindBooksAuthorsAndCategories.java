@@ -35,27 +35,27 @@ public class FindBooksAuthorsAndCategories {
 	 */
 	public static void main(String[] args) {
 
-        GenericApplicationContext ctx =
-        		new AnnotationConfigApplicationContext(AppConfig.class);
+		GenericApplicationContext ctx =
+				new AnnotationConfigApplicationContext(AppConfig.class);
 
-        PublishingDao publishingDao = ctx.getBean(PublishingDao.class);
+		PublishingDao publishingDao = ctx.getBean(PublishingDao.class);
 
-        List<Book> books = publishingDao.findAllWithAuthorAndCategory();
-        logger.info("================================");
-        logger.info("Listing all books with authors and category names: ");
-        listBooksWithCategoryAndAuthors(books);
-        logger.info("================================");
+		List<Book> books = publishingDao.findAllWithAuthorAndCategory();
+		logger.info("================================");
+		logger.info("Listing all books with authors and category names: ");
+		listBooksWithCategoryAndAuthors(books);
+		logger.info("================================");
 
-        ctx.close();
+		ctx.close();
 	}
 	
 	public static void listBooksWithCategoryAndAuthors(List<Book> books) {
 
-        books.forEach(b -> {
-        	logger.info(b.toString());
-        	logger.info(b.getCategory().toString());
-			b.getAuthors().forEach(a -> logger.info(a.toString()));
-			logger.info("-----------------");
-        });
+		books.forEach(b -> {
+			logger.info(b.toString());
+			logger.info(b.getCategory().toString());
+				b.getAuthors().forEach(a -> logger.info(a.toString()));
+				logger.info("-----------------");
+		});
 	}
 }

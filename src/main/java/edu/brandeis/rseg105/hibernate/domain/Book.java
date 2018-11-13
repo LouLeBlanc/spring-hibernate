@@ -41,8 +41,6 @@ import javax.persistence.*;
  */
 public class Book extends AbstractEntity {
 	
-	private static final long serialVersionUID = 1L;
-
 	public static final String FIND_BOOK_WITH_AUTHOR_CATEGORY_BY_ID =
 			"Book.findBookWithAuthorCategoryById";
 	public static final String FIND_BOOKS_BY_AUTHOR_ID =
@@ -65,7 +63,7 @@ public class Book extends AbstractEntity {
 	@JoinColumn(name = "category_id")
 	private Category category;
 
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name = "author_book",
 			joinColumns = @JoinColumn(name = "book_id"),
 			inverseJoinColumns = @JoinColumn(name = "author_id"))
@@ -161,8 +159,8 @@ public class Book extends AbstractEntity {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Book - Id: %d, Category: %s, ISBN: %s, Title: %s, Price: %f",
-				this.id, this.category.getName(), this.isbn, this.title, this.price);
+		return String.format("Book - Id: %d, Category Id: %s, ISBN: %s, Title: %s, Price: %f",
+				this.id, this.category.getId(), this.isbn, this.title, this.price);
 	}
 
 	@Override public boolean equals(Object o) {

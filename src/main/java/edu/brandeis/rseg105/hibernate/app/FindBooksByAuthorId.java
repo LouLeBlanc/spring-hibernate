@@ -34,18 +34,16 @@ public class FindBooksByAuthorId {
 	public static void main(String[] args) {
 		long authorId = 7L;
 
-        GenericApplicationContext ctx =
-        		new AnnotationConfigApplicationContext(AppConfig.class);
+		GenericApplicationContext ctx =
+				new AnnotationConfigApplicationContext(AppConfig.class);
 
-        PublishingDao publishingDao = ctx.getBean(PublishingDao.class); 
+		PublishingDao publishingDao = ctx.getBean(PublishingDao.class); 
 
-        List<Book> books = publishingDao.findBooksByAuthorId(authorId);
+		List<Book> books = publishingDao.findBooksByAuthorId(authorId);
 
-        logger.info("================================");
-        logger.info("Listing books by author id " + authorId + ": ");
-        FindBooksAuthorsAndCategories.listBooksWithCategoryAndAuthors(books);
-        logger.info("================================");
-
+		logger.info("================================");
+		logger.info("Listing books by author id " + authorId + ": ");
+		FindBooksAuthorsAndCategories.listBooksWithCategoryAndAuthors(books);
+		logger.info("================================");
 	}
-
 }

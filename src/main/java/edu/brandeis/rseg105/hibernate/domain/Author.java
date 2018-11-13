@@ -17,8 +17,6 @@ import javax.persistence.*;
 @Table(name = "author")
 public class Author implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@Column(name = "id")
 	private long id;

@@ -31,23 +31,21 @@ public class FindBookWithAuthorsCategoryById {
 	public static void main(String[] args) {
 		Long bookID = 1L;
 
-        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+	GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        PublishingDao publishingDao = ctx.getBean("publishingDao", PublishingDao.class); 
+	PublishingDao publishingDao = ctx.getBean("publishingDao", PublishingDao.class); 
 
-        Book book = publishingDao.findBookWithAuthorAndCategoryById(bookID);
+	Book book = publishingDao.findBookWithAuthorAndCategoryById(bookID);
 
-        logger.info("================================");
-        logger.info("Listing book with authors and category by book's ID: ");
-		logger.info(book.toString());
-		logger.info(book.getCategory().toString());
-		Set<Author> authors = book.getAuthors();
-		authors.forEach(author -> {
-			logger.info(author.toString());
-		});
-        logger.info("================================");
+	logger.info("================================");
+	logger.info("Listing book with authors and category by book's ID: ");
+	logger.info(book.toString());
+	logger.info(book.getCategory().toString());
+	Set<Author> authors = book.getAuthors();
+	authors.forEach(author -> { logger.info(author.toString()); });
+	logger.info("================================");
 
-        ctx.close();
+	ctx.close();
 
 
 	}

@@ -30,6 +30,7 @@ INSERT INTO author (id, first_name, last_name, description) VALUES (5, 'Sir Arth
 INSERT INTO author (id, first_name, last_name, description) VALUES (6, 'Charles', 'Dickens', "Popular Victorian author");
 INSERT INTO author (id, first_name, last_name, description) VALUES (7, 'Suzanne', 'Collins', "Popular author of young adult fiction");
 INSERT INTO author (id, first_name, last_name, description) VALUES (8, 'Stanley F.', 'Schmidt', "Math professor, educational writer");
+
 # INSERT INTO author (id, first_name, last_name, description) VALUES (9, 'Joshua', 'Bloch', "Professor, Carnegie Mellon University");
 
 

@@ -31,36 +31,24 @@ public class DeleteBookWithAuthor {
 	private static Logger logger = LoggerFactory.getLogger(DeleteBookWithAuthor.class);
 
 	public static void main(String[] args) {
-		Author newAuthor = new Author();
-		newAuthor.setId(9L);
-		newAuthor.setFirstName("Joshua");
-		newAuthor.setLastName("Bloch");
-		newAuthor.setDescription("Professor, Carnegie Mellon University");
-
-		Book newBook = new Book();
-		newBook.setId(8L);
-		newBook.setIsbn("9780134685997");
-		newBook.setTitle("Effective Java");
-		newBook.setPrice((float) 54.99);
-		newBook.addAuthor(newAuthor);
-
 
 		GenericApplicationContext ctx =
 				new AnnotationConfigApplicationContext(AppConfig.class);
 
 		PublishingDao publishingDao = ctx.getBean(PublishingDao.class);
 
+		Book deleteBook = publishingDao.findBookWithAuthorAndCategoryById(8L);
 		logger.info("================================");
-		logger.info("Removing book " + newBook.getTitle() + ":");
-		publishingDao.delete(newBook);
+		logger.info("Removing book " + deleteBook.getTitle() + ":");
 
-        List<Book> books = publishingDao.findAllWithAuthorAndCategory();
-        logger.info("================================");
-        logger.info("Listing all books with authors and category names:");
-        FindBooksAuthorsAndCategories.listBooksWithCategoryAndAuthors(books);
-        logger.info("================================");
+		publishingDao.delete(deleteBook);
 
-        ctx.close();
+		List<Book> books = publishingDao.findAllWithAuthorAndCategory();
+		logger.info("================================");
+		logger.info("Listing all books with authors and category names:");
+		FindBooksAuthorsAndCategories.listBooksWithCategoryAndAuthors(books);
+		logger.info("================================");
+
+		ctx.close();
 	}
-
 }
